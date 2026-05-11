@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recetas del Chef</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#f2f2f2;
+}
+
+/* LOGIN */
+
+#login{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  color:white;
+  z-index:9999;
+}
+
+#login input{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  margin-top:10px;
+  width:200px;
+  text-align:center;
+}
+
+#login button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:white;
+  color:#4f46e5;
+  font-weight:bold;
+}
+
+/* CONTENIDO */
+
+.content{
+  display:none;
+}
+
+/* PORTADA */
+
+.hero-container{
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+}
+
+.hero-circle{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  border:4px solid white;
+}
+
+.hero-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* GRID */
+
+.container{
+  max-width:520px;
+  margin:auto;
+  padding:12px;
+}
+
+.recetas{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+.card img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.card h3{
+  font-size:12px;
+  padding:6px;
+  color:#4f46e5;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+}
+
+.modal-content{
+  background:white;
+  width:100%;
+  max-width:400px;
+  border-radius:18px;
+  padding:18px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.modal h2{
+  color:#4f46e5;
+  margin-bottom:10px;
+}
+
+.step{
+  margin-top:12px;
+}
+
+.step img{
+  width:100%;
+  border-radius:12px;
+  margin-top:5px;
+}
+
+.step p{
+  font-size:14px;
+  margin-top:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <h2>🔐 Acceso privado</h2>
+  <input type="password" id="pass" placeholder="Contraseña">
+  <button onclick="checkPassword()">Entrar</button>
+</div>
+
+<!-- CONTENIDO -->
+<div class="content" id="app">
+
+  <!-- PORTADA -->
+  <div class="hero-container">
+    <div class="hero-circle">
+      <img src="https://cdn.discordapp.com/attachments/1464341445577150498/1503227667514789888/image0.png">
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="container">
+
+    <div class="recetas">
+
+      <div class="card" onclick="openRecipe('Pasta')">
+        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9">
+        <h3>Pasta</h3>
+      </div>
+
+      <div class="card" onclick="openRecipe('Pizza')">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+        <h3>Pizza</h3>
+      </div>
+
+      <div class="card" onclick="openRecipe('Burger')">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+        <h3>Burger</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="title"></h2>
+    <div id="steps"></div>
+  </div>
+</div>
+
+<script>
+
+/* CONTRASEÑA */
+function checkPassword(){
+  const pass = document.getElementById("pass").value;
+
+  if(pass === "1234"){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("app").style.display = "block";
+  } else {
+    alert("Contraseña incorrecta");
+  }
+}
+
+/* RECETAS */
+const recipes = {
+  Pasta: [
+    {text:"Hervir la pasta", img:"https://images.unsplash.com/photo-1521389508051"},
+    {text:"Hacer salsa", img:"https://images.unsplash.com/photo-1604908177223"},
+    {text:"Mezclar", img:"https://images.unsplash.com/photo-1555949258"}
+  ],
+  Pizza: [
+    {text:"Hacer masa", img:"https://images.unsplash.com/photo-1548365328"},
+    {text:"Añadir ingredientes", img:"https://images.unsplash.com/photo-1601924582970"},
+    {text:"Hornear", img:"https://images.unsplash.com/photo-1542281286"}
+  ],
+  Burger: [
+    {text:"Cocinar carne", img:"https://images.unsplash.com/photo-1550547660"},
+    {text:"Montar burger", img:"https://images.unsplash.com/photo-1551782450"},
+    {text:"Servir", img:"https://images.unsplash.com/photo-1550317138"}
+  ]
+};
+
+function openRecipe(name){
+
+  document.getElementById("title").innerText = name;
+
+  const steps = document.getElementById("steps");
+  steps.innerHTML = "";
+
+  recipes[name].forEach((s,i)=>{
+    steps.innerHTML += `
+      <div class="step">
+        <strong>Paso ${i+1}</strong>
+        <p>${s.text}</p>
+        <img src="${s.img}">
+      </div>
+    `;
+  });
+
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
