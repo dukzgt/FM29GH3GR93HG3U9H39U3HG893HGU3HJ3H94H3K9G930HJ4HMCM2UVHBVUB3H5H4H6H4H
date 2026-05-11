@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recetas del Chef</title>
+<title>Recetas de Dianita</title>
 
 <style>
 
@@ -18,48 +18,12 @@ body{
   background:#f2f2f2;
 }
 
-/* LOGIN */
-
-#login{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#4f46e5,#7c3aed);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  color:white;
-  z-index:9999;
-}
-
-#login input{
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  margin-top:10px;
-  width:200px;
-  text-align:center;
-}
-
-#login button{
-  margin-top:10px;
-  padding:10px 20px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  background:white;
-  color:#4f46e5;
-  font-weight:bold;
-}
-
-/* CONTENIDO */
-
-.content{
-  display:none;
+/* BLOQUEO SCROLL MODAL */
+body.modal-open{
+  overflow:hidden;
 }
 
 /* PORTADA */
-
 .hero-container{
   display:flex;
   justify-content:center;
@@ -82,7 +46,6 @@ body{
 }
 
 /* GRID */
-
 .container{
   max-width:520px;
   margin:auto;
@@ -117,7 +80,6 @@ body{
 }
 
 /* MODAL */
-
 .modal{
   display:none;
   position:fixed;
@@ -126,6 +88,7 @@ body{
   justify-content:center;
   align-items:center;
   padding:15px;
+  z-index:10000;
 }
 
 .modal-content{
@@ -135,14 +98,24 @@ body{
   border-radius:18px;
   padding:18px;
   position:relative;
+  max-height:85vh;
+  overflow-y:auto;
 }
 
+/* BOTÓN CERRAR */
 .close{
   position:absolute;
-  top:10px;
-  right:12px;
-  font-size:22px;
+  top:8px;
+  right:10px;
+  font-size:28px;
   cursor:pointer;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(0,0,0,0.05);
 }
 
 .modal h2{
@@ -170,43 +143,31 @@ body{
 
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-  <h2>🔐 Acceso privado</h2>
-  <input type="password" id="pass" placeholder="Contraseña">
-  <button onclick="checkPassword()">Entrar</button>
+<!-- PORTADA -->
+<div class="hero-container">
+  <div class="hero-circle">
+    <img src="img/logo.png" alt="Logo">
+  </div>
 </div>
 
-<!-- CONTENIDO -->
-<div class="content" id="app">
+<!-- GRID -->
+<div class="container">
 
-  <!-- PORTADA -->
-  <div class="hero-container">
-    <div class="hero-circle">
-      <img src="https://cdn.discordapp.com/attachments/1464341445577150498/1503227667514789888/image0.png">
+  <div class="recetas">
+
+    <div class="card" onclick="openRecipe('Patatas')">
+      <img src="img/patatasair.png">
+      <h3>Patatas Fit</h3>
     </div>
-  </div>
 
-  <!-- GRID -->
-  <div class="container">
+    <div class="card" onclick="openRecipe('quesadilla')">
+      <img src="img/quesadillasmex.png">
+      <h3>Quesadillas Fit</h3>
+    </div>
 
-    <div class="recetas">
-
-      <div class="card" onclick="openRecipe('Pasta')">
-        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9">
-        <h3>Pasta</h3>
-      </div>
-
-      <div class="card" onclick="openRecipe('Pizza')">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
-        <h3>Pizza</h3>
-      </div>
-
-      <div class="card" onclick="openRecipe('Burger')">
-        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
-        <h3>Burger</h3>
-      </div>
-
+    <div class="card" onclick="openRecipe('kebab')">
+      <img src="img/kebab.png">
+      <h3>Kebab fit</h3>
     </div>
 
   </div>
@@ -216,42 +177,56 @@ body{
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
+
     <span class="close" onclick="closeModal()">×</span>
+
     <h2 id="title"></h2>
     <div id="steps"></div>
+
   </div>
 </div>
 
 <script>
 
-/* CONTRASEÑA */
-function checkPassword(){
-  const pass = document.getElementById("pass").value;
-
-  if(pass === "1234"){
-    document.getElementById("login").style.display = "none";
-    document.getElementById("app").style.display = "block";
-  } else {
-    alert("Contraseña incorrecta");
-  }
-}
-
 /* RECETAS */
 const recipes = {
-  Pasta: [
-    {text:"Hervir la pasta", img:"https://images.unsplash.com/photo-1521389508051"},
-    {text:"Hacer salsa", img:"https://images.unsplash.com/photo-1604908177223"},
-    {text:"Mezclar", img:"https://images.unsplash.com/photo-1555949258"}
+  Patatas: [
+    {text:"Utilizamos un par de patatas naturales, y lavamos muy bien."},
+    {text:"Las cortamos en bastones, sin quitar la piel.", img:"img/bastones.png"},
+	{text:"Volvemos a lavar las patatas"},    
+	{text:"Ponemos una olla a calentar con agua hasta que esté bien caliente."},
+	{text:"Una vez este la olla claiente, las añadimos a la olla durante 5 minutos.", img:"img/papashervir.png"},
+	{text:"Una vez transcurridos los 5 minutos, las sacamos y las enfriamos con agua fría para cortar la cocción.", img:"img/cortacoccion.png"},
+	{text:"Luego secamos muy bien las patatas.", img:"img/secadas.png"},
+	{text:"Pulverizamos un chorrito de aceite de oliva"},
+	{text:"Ahora añadimos las siguientes especias: jengibre, pimentón dulce, pimienta, pimentón (paprika), comino, cebolla en polvo y ajo en polvo.", img:"img/especiasv2.png"},
+	{text:"Por último, las ponemos en la freidora de aire a 200 °C durante 15 minutos, dándoles la vuelta a mitad de cocción."},
   ],
-  Pizza: [
-    {text:"Hacer masa", img:"https://images.unsplash.com/photo-1548365328"},
-    {text:"Añadir ingredientes", img:"https://images.unsplash.com/photo-1601924582970"},
-    {text:"Hornear", img:"https://images.unsplash.com/photo-1542281286"}
+  quesadilla: [
+    {text:"Ponemos una olla con agua a hervir y agregamos pimienta, laurel, ajo y sal.", img:"img/ollapimienta.png"},
+    {text:"Agregamos la pechuga y cocinamos de 10 a 15 minutos a máxima potencia.", img:"img/pechugaadd.png"},
+	{text:"Retiramos la pechuga y la desmenuzamos bien con ayuda de dos tenedores.", img:"img/desmenuza.png"},
+	{text:"Picamos una cebolla morada a daditos pequeños."},
+	{text:"Preparamos una sarten a fuego medio con un poco de aceite.", img:"img/sartenfuegomedio.png"},
+	{text:"Agregamos la cebolla morada y un poco de tomate, luego removemos bien para que la cebolla se impregne del tomate.", img:"img/freimoscebollatomate.png"},
+	{text:"Cuando la cebolla esté pochada, añadimos el pollo desmenuzado.", img:"img/pollodes.png"},
+	{text:"A continuación, agregamos dos cucharadas de salsa BBQ cero, la cantidad al gusto. Y removemos durante al menos dos minutos", img:"img/salsapollobbq.png"},
+	{text:"Cuando la cebolla esté pochada, añadimos el pollo desmenuzado.", img:"img/pollodes.png"},
+	{text:"Para montar la quesadilla, colocamos una tortita de trigo integral en la sartén a fuego medio y añadimos queso mozzarella.", img:"img/tortiamozarrella.png"},
+	{text:"Añadimos el relleneno. y dejamos que se funda un poco el queso.", img:"img/elrellenoquesa.png"},
+	{text:"Luego cerramos y listo.", img:"img/cerramosquesa.png"},
+	
+
   ],
-  Burger: [
-    {text:"Cocinar carne", img:"https://images.unsplash.com/photo-1550547660"},
-    {text:"Montar burger", img:"https://images.unsplash.com/photo-1551782450"},
-    {text:"Servir", img:"https://images.unsplash.com/photo-1550317138"}
+  kebab: [
+    {text:"Empezamos preparando la salsa, añadiendo yogur griego sin azcucar en un bol, con ajo en polvo", img:"img/yogurt.png"},
+	{text:"Añadimos un chorro de limon.", img:"img/climon.png"},
+	{text:"Oregano y movemos todo muy bien.", img:"img/oregano.png"},
+    {text:"Luego, cocinamos la carne de kebab de mercadona en air fryer durante 8–12 minutos a 190 °C.", img:"img/airkebab.png"},
+    {text:"Una vez lista, cogemos una tortita integral y añadimos la salsa y lechuga, cortada fina", img:"img/salsayle.png"},
+    {text:"Le añadimos la carne y un poco mas de salsa por arriba", img:"img/salsaycar.png"},
+	{text:"Cerramos el rollo de kebab y ya está listo para servir"}
+	
   ]
 };
 
@@ -263,21 +238,32 @@ function openRecipe(name){
   steps.innerHTML = "";
 
   recipes[name].forEach((s,i)=>{
+
     steps.innerHTML += `
       <div class="step">
         <strong>Paso ${i+1}</strong>
         <p>${s.text}</p>
-        <img src="${s.img}">
+        ${s.img ? `<img src="${s.img}" alt="">` : ""}
       </div>
     `;
+
   });
 
   document.getElementById("modal").style.display="flex";
+  document.body.classList.add("modal-open");
 }
 
 function closeModal(){
   document.getElementById("modal").style.display="none";
+  document.body.classList.remove("modal-open");
 }
+
+/* cerrar al clicar fuera */
+document.getElementById("modal").addEventListener("click", function(e){
+  if(e.target === this){
+    closeModal();
+  }
+});
 
 </script>
 
