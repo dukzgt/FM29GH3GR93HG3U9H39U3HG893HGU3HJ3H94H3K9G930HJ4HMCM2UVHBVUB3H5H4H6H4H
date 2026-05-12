@@ -1,44 +1,44 @@
-const recetas = {
-  patatas: [
-    { text: "Utilizamos un par de patatas naturales, y lavamos muy bien." },
-    { text: "Las cortamos en bastones, sin quitar la piel.", img: "img/bastones.png" },
-    { text: "Volvemos a lavar las patatas" },
-    { text: "Ponemos una olla a calentar con agua hasta que esté bien caliente." },
-    { text: "Una vez esté la olla caliente, las añadimos a la olla durante 5 minutos.", img: "img/papashervir.png" },
-    { text: "Una vez transcurridos los 5 minutos, las sacamos y las enfriamos con agua fría para cortar la cocción.", img: "img/cortacoccion.png" },
-    { text: "Luego secamos muy bien las patatas.", img: "img/secadas.png" },
-    { text: "Pulverizamos un chorrito de aceite de oliva" },
-    { text: "Ahora añadimos las siguientes especias: jengibre, pimentón dulce, pimienta, paprika, comino, cebolla en polvo y ajo en polvo.", img: "img/especiasv2.png" },
-    { text: "Por último, las ponemos en la freidora de aire a 200 °C durante 15 minutos, dándoles la vuelta a mitad de cocción." }
+{
+  "patatas": [
+    { "text": "Utilizamos un par de patatas naturales, y lavamos muy bien." },
+    { "text": "Las cortamos en bastones, sin quitar la piel.", "img": "img/bastones.png" },
+    { "text": "Volvemos a lavar las patatas" },
+    { "text": "Ponemos una olla a calentar con agua hasta que esté bien caliente." },
+    { "text": "Una vez esté la olla caliente, las añadimos a la olla durante 5 minutos.", "img": "img/papashervir.png" },
+    { "text": "Una vez transcurridos los 5 minutos, las sacamos y las enfriamos con agua fría para cortar la cocción.", "img": "img/cortacoccion.png" },
+    { "text": "Luego secamos muy bien las patatas.", "img": "img/secadas.png" },
+    { "text": "Pulverizamos un chorrito de aceite de oliva" },
+    { "text": "Ahora añadimos las siguientes especias: jengibre, pimentón dulce, pimienta, paprika, comino, cebolla en polvo y ajo en polvo.", "img": "img/especiasv2.png" },
+    { "text": "Por último, las ponemos en la freidora de aire a 200 °C durante 15 minutos, dándoles la vuelta a mitad de cocción." }
   ],
 
-  quesadilla: [
-    { text: "Ponemos una olla con agua a hervir y agregamos pimienta, laurel, ajo y sal.", img: "img/ollapimienta.png" },
-    { text: "Agregamos la pechuga y cocinamos de 10 a 15 minutos a máxima potencia.", img: "img/pechugaadd.png" },
-    { text: "Retiramos la pechuga y la desmenuzamos bien con ayuda de dos tenedores.", img: "img/desmenuza.png" },
-    { text: "Picamos una cebolla morada a daditos pequeños." },
-    { text: "Preparamos una sartén a fuego medio con un poco de aceite.", img: "img/sartenfuegomedio.png" },
-    { text: "Agregamos la cebolla morada y un poco de tomate, luego removemos bien.", img: "img/freimoscebollatomate.png" },
-    { text: "Cuando la cebolla esté pochada, añadimos el pollo desmenuzado.", img: "img/pollodes.png" },
-    { text: "Agregamos dos cucharadas de salsa BBQ cero y removemos.", img: "img/salsapollobbq.png" },
-    { text: "Para montar la quesadilla añadimos queso mozzarella.", img: "img/tortiamozarrella.png" },
-    { text: "Añadimos el relleno y dejamos que se funda el queso.", img: "img/elrellenoquesa.png" },
-    { text: "Cerramos y listo.", img: "img/cerramosquesa.png" }
+  "quesadilla": [
+    { "text": "Ponemos una olla con agua a hervir y agregamos pimienta, laurel, ajo y sal.", "img": "img/ollapimienta.png" },
+    { "text": "Agregamos la pechuga y cocinamos de 10 a 15 minutos a máxima potencia.", "img": "img/pechugaadd.png" },
+    { "text": "Retiramos la pechuga y la desmenuzamos bien con ayuda de dos tenedores.", "img": "img/desmenuza.png" },
+    { "text": "Picamos una cebolla morada a daditos pequeños." },
+    { "text": "Preparamos una sartén a fuego medio con un poco de aceite.", "img": "img/sartenfuegomedio.png" },
+    { "text": "Agregamos la cebolla morada y un poco de tomate, luego removemos bien.", "img": "img/freimoscebollatomate.png" },
+    { "text": "Cuando la cebolla esté pochada, añadimos el pollo desmenuzado.", "img": "img/pollodes.png" },
+    { "text": "Agregamos dos cucharadas de salsa BBQ cero y removemos.", "img": "img/salsapollobbq.png" },
+    { "text": "Para montar la quesadilla añadimos queso mozzarella.", "img": "img/tortiamozarrella.png" },
+    { "text": "Añadimos el relleno y dejamos que se funda el queso.", "img": "img/elrellenoquesa.png" },
+    { "text": "Cerramos y listo.", "img": "img/cerramosquesa.png" }
   ],
 
-  kebab: [
-    { text: "Preparamos salsa con yogur griego sin azúcar y ajo en polvo.", img: "img/yogurt.png" },
-    { text: "Añadimos limón.", img: "img/climon.png" },
-    { text: "Añadimos orégano.", img: "img/oregano.png" },
-    { text: "Cocinamos carne de kebab en air fryer 8–12 min a 190°C.", img: "img/airkebab.png" },
-    { text: "Montamos con tortita integral, salsa y lechuga.", img: "img/salsayle.png" },
-    { text: "Añadimos la carne y más salsa.", img: "img/salsaycar.png" },
-    { text: "Cerramos el kebab." }
+  "kebab": [
+    { "text": "Preparamos salsa con yogur griego sin azúcar y ajo en polvo.", "img": "img/yogurt.png" },
+    { "text": "Añadimos limón.", "img": "img/climon.png" },
+    { "text": "Añadimos orégano.", "img": "img/oregano.png" },
+    { "text": "Cocinamos carne de kebab en air fryer 8–12 min a 190°C.", "img": "img/airkebab.png" },
+    { "text": "Montamos con tortita integral, salsa y lechuga.", "img": "img/salsayle.png" },
+    { "text": "Añadimos la carne y más salsa.", "img": "img/salsaycar.png" },
+    { "text": "Cerramos el kebab." }
   ],
 
-  snacklomo: [
-    { text: "Ponemos la caña de lomo en la air fryer.", img: "img/airlomo.png" },
-    { text: "200°C durante 10 minutos, dando la vuelta a mitad.", img: "img/vueltalomo.png" },
-    { text: "Listo para servir." }
+  "snacklomo": [
+    { "text": "Ponemos la caña de lomo en la air fryer.", "img": "img/airlomo.png" },
+    { "text": "200°C durante 10 minutos, dando la vuelta a mitad.", "img": "img/vueltalomo.png" },
+    { "text": "Listo para servir." }
   ]
-};
+}
