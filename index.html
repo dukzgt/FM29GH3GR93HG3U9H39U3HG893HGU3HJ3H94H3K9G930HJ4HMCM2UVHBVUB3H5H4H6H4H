@@ -6,7 +6,6 @@
 <title>Recetas de Dianita</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
@@ -18,7 +17,6 @@ body{
   background:#f2f2f2;
 }
 
-/* BLOQUEO SCROLL MODAL */
 body.modal-open{
   overflow:hidden;
 }
@@ -45,14 +43,12 @@ body.modal-open{
   object-fit:cover;
 }
 
-/* GRID */
 .container{
   max-width:520px;
   margin:auto;
   padding:12px;
 }
 
-/* BUSCADOR */
 .search-box{
   text-align:center;
   margin-bottom:15px;
@@ -117,7 +113,6 @@ body.modal-open{
   overflow-y:auto;
 }
 
-/* BOTÓN CERRAR */
 .close{
   position:absolute;
   top:8px;
@@ -152,7 +147,6 @@ body.modal-open{
   font-size:14px;
   margin-top:5px;
 }
-
 </style>
 </head>
 
@@ -165,8 +159,9 @@ body.modal-open{
   </div>
 </div>
 
-<!-- BUSCADOR -->
 <div class="container">
+
+  <!-- BUSCADOR -->
   <div class="search-box">
     <input type="text" id="search" placeholder="Buscar receta...">
   </div>
@@ -176,27 +171,37 @@ body.modal-open{
 
     <div class="card" data-name="patatas" onclick="openRecipe('Patatas')">
       <img src="img/patatasair.png">
-      <h3>Patatas Fit</h3>
+      <h3>Patatas saludable</h3>
     </div>
 
     <div class="card" data-name="quesadillas" onclick="openRecipe('quesadilla')">
       <img src="img/quesadillasmex.png">
-      <h3>Quesadillas Fit</h3>
+      <h3>Quesadillas Mexicanas saludable</h3>
     </div>
 
     <div class="card" data-name="kebab" onclick="openRecipe('kebab')">
       <img src="img/kebab.png">
-      <h3>Kebab Fit</h3>
+      <h3>Kebab saludable</h3>
     </div>
 
-    <div class="card" data-name="snack lomo" onclick="openRecipe('snacklomo')">
+    <div class="card" data-name="snacklomo" onclick="openRecipe('snacklomo')">
       <img src="img/snacklomo.png">
-      <h3>Snack caña de Lomo Fit</h3>
+      <h3>Snack caña de Lomo saludable</h3>
     </div>
-	
-    <div class="card" data-name="snack lomo" onclick="openRecipe('snacklomo')">
-      <img src="img/snacklomo.png">
-      <h3>Snack caña de Lomo Fit</h3>
+
+    <div class="card" onclick="openRecipe('calzones')">
+      <img src="img/pizzacalzones.png">
+      <h3>Pizza calzones saludable</h3>
+    </div>
+
+    <div class="card" onclick="openRecipe('pizzaza')">
+      <img src="img/pizzazanahoria.png">
+      <h3>Mini pizzas de zanahoria saludable</h3>
+    </div>
+
+    <div class="card" onclick="openRecipe('calzonatun')">
+      <img src="img/calzonatun.png">
+      <h3>Calzón de atún saludable</h3>
     </div>
 
   </div>
@@ -205,61 +210,28 @@ body.modal-open{
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
-
     <span class="close" onclick="closeModal()">×</span>
-
     <h2 id="title"></h2>
     <div id="steps"></div>
-
   </div>
 </div>
 
 <script>
+let recipes = {};
 
-/* RECETAS */
-const recipes = {
-  Patatas: [
-    {text:"Utilizamos un par de patatas naturales, y lavamos muy bien."},
-    {text:"Las cortamos en bastones, sin quitar la piel.", img:"img/bastones.png"},
-    {text:"Volvemos a lavar las patatas"},
-    {text:"Ponemos una olla a calentar con agua hasta que esté bien caliente."},
-    {text:"Una vez este la olla claiente, las añadimos a la olla durante 5 minutos.", img:"img/papashervir.png"},
-    {text:"Una vez transcurridos los 5 minutos, las sacamos y las enfriamos con agua fría para cortar la cocción.", img:"img/cortacoccion.png"},
-    {text:"Luego secamos muy bien las patatas.", img:"img/secadas.png"},
-    {text:"Pulverizamos un chorrito de aceite de oliva"},
-    {text:"Ahora añadimos las siguientes especias: jengibre, pimentón dulce, pimienta, pimentón (paprika), comino, cebolla en polvo y ajo en polvo.", img:"img/especiasv2.png"},
-    {text:"Por último, las ponemos en la freidora de aire a 200 °C durante 15 minutos, dándoles la vuelta a mitad de cocción."},
-  ],
-  quesadilla: [
-    {text:"Ponemos una olla con agua a hervir y agregamos pimienta, laurel, ajo y sal.", img:"img/ollapimienta.png"},
-    {text:"Agregamos la pechuga y cocinamos de 10 a 15 minutos a máxima potencia.", img:"img/pechugaadd.png"},
-    {text:"Retiramos la pechuga y la desmenuzamos bien con ayuda de dos tenedores.", img:"img/desmenuza.png"},
-    {text:"Picamos una cebolla morada a daditos pequeños."},
-    {text:"Preparamos una sarten a fuego medio con un poco de aceite.", img:"img/sartenfuegomedio.png"},
-    {text:"Agregamos la cebolla morada y un poco de tomate, luego removemos bien.", img:"img/freimoscebollatomate.png"},
-    {text:"Cuando la cebolla esté pochada, añadimos el pollo desmenuzado.", img:"img/pollodes.png"},
-    {text:"Agregamos dos cucharadas de salsa BBQ cero y removemos.", img:"img/salsapollobbq.png"},
-    {text:"Para montar la quesadilla añadimos queso mozzarella.", img:"img/tortiamozarrella.png"},
-    {text:"Añadimos el relleno y dejamos que se funda el queso.", img:"img/elrellenoquesa.png"},
-    {text:"Cerramos y listo.", img:"img/cerramosquesa.png"},
-  ],
-  kebab: [
-    {text:"Preparamos salsa con yogur griego sin azúcar y ajo en polvo.", img:"img/yogurt.png"},
-    {text:"Añadimos limón.", img:"img/climon.png"},
-    {text:"Añadimos orégano.", img:"img/oregano.png"},
-    {text:"Cocinamos carne de kebab en air fryer 8–12 min a 190°C.", img:"img/airkebab.png"},
-    {text:"Montamos con tortita integral, salsa y lechuga.", img:"img/salsayle.png"},
-    {text:"Añadimos la carne y más salsa.", img:"img/salsaycar.png"},
-    {text:"Cerramos el kebab."}
-  ],
-  snacklomo: [
-    {text:"Ponemos la caña de lomo en la air fryer.", img:"img/airlomo.png"},
-    {text:"200°C durante 10 minutos, dando la vuelta a mitad.", img:"img/vueltalomo.png"},
-    {text:"Listo para servir."}
-  ]
-};
+/* CARGAR JSON */
+fetch("recipes.json")
+  .then(res => res.json())
+  .then(data => {
+    recipes = data;
+  });
 
 function openRecipe(name){
+
+  if(!recipes[name]){
+    alert("Receta en carga...");
+    return;
+  }
 
   document.getElementById("title").innerText = name;
 
@@ -271,7 +243,7 @@ function openRecipe(name){
       <div class="step">
         <strong>Paso ${i+1}</strong>
         <p>${s.text}</p>
-        ${s.img ? `<img src="${s.img}" alt="">` : ""}
+        ${s.img ? `<img src="${s.img}">` : ""}
       </div>
     `;
   });
@@ -285,7 +257,6 @@ function closeModal(){
   document.body.classList.remove("modal-open");
 }
 
-/* cerrar fuera */
 document.getElementById("modal").addEventListener("click", function(e){
   if(e.target === this){
     closeModal();
@@ -304,7 +275,6 @@ search.addEventListener("input", function(){
     card.style.display = name.includes(value) ? "block" : "none";
   });
 });
-
 </script>
 
 </body>
