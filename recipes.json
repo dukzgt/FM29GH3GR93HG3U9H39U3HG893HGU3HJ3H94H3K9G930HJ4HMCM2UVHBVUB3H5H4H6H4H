@@ -1,0 +1,51 @@
+{
+  "Patatas": [
+    { "text": "Utilizamos un par de patatas naturales, y lavamos muy bien." },
+    { "text": "Las cortamos en bastones, sin quitar la piel.", "img": "img/bastones.png" },
+    { "text": "Volvemos a lavar las patatas" },
+    { "text": "Ponemos una olla a calentar con agua hasta que esté bien caliente." },
+    { "text": "Una vez este la olla caliente, añadimos las patatas a la olla durante 5 minutos.", "img": "img/papashervir.png" },
+    { "text": "Las enfriamos con agua fría para cortar la cocción.", "img": "img/cortacoccion.png" },
+    { "text": "Secamos muy bien las patatas.", "img": "img/secadas.png" },
+    { "text": "Pulverizamos aceite de oliva" },
+    { "text": "Añadimos especias (jengibre, pimentón, pimienta, comino, ajo, cebolla...)", "img": "img/especiasv2.png" },
+    { "text": "Freidora de aire 200°C 15 min" }
+  ],
+
+  "quesadilla": [
+    { "text": "Hervimos pechuga con especias", "img": "img/ollapimienta.png" },
+    { "text": "Cocinamos 10–15 min", "img": "img/pechugaadd.png" },
+    { "text": "Desmenuzamos el pollo", "img": "img/desmenuza.png" },
+    { "text": "Cocinamos cebolla y tomate", "img": "img/freimoscebollatomate.png" },
+    { "text": "Añadimos salsa BBQ cero", "img": "img/salsapollobbq.png" },
+    { "text": "Montamos con mozzarella", "img": "img/tortiamozarrella.png" }
+  ],
+
+  "kebab": [
+    { "text": "Salsa de yogur + ajo + limón + orégano", "img": "img/yogurt.png" },
+    { "text": "Cocinamos carne en air fryer", "img": "img/airkebab.png" },
+    { "text": "Montamos con tortita integral", "img": "img/salsayle.png" }
+  ],
+
+  "snacklomo": [
+    { "text": "Air fryer 200°C 10 min", "img": "img/airlomo.png" }
+  ],
+
+  "calzones": [
+    { "text": "Tortita integral + tomate", "img": "img/maizmitad.png" },
+    { "text": "Atún, jamón york y mozzarella", "img": "img/tortitamaiz2.png" },
+    { "text": "Hornear o air fryer 10 min", "img": "img/airfinal.png" }
+  ],
+
+  "pizzaza": [
+    { "text": "Trituramos zanahoria con huevo y especias", "img": "img/aaa.png" },
+    { "text": "Formamos mini pizzas", "img": "img/horno12.png" },
+    { "text": "Añadimos toppings", "img": "img/relleno12.png" }
+  ],
+
+  "calzonatun": [
+    { "text": "Huevo batido en sartén", "img": "img/vertemos1.png" },
+    { "text": "Añadimos pan de fajita", "img": "img/fajiencima.png" },
+    { "text": "Rellenamos con atún y mozzarella", "img": "img/mitadatun.png" }
+  ]
+}
